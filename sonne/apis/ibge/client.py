@@ -1,5 +1,6 @@
 from sonne.base.client import BaseClient
 from .BancoGeodesico import BancoGeodesico
+from .NomesGeograficos import NomesGeograficos
 from .agregados import Agregados
 
 
@@ -18,3 +19,4 @@ class IBGEClient(BaseClient):
 
         self.agregados = Agregados(self)
         self.BancoGeodesico = BancoGeodesico(self)
+        self.NomesGeograficos = NomesGeograficos(self)
