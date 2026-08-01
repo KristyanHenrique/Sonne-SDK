@@ -14,8 +14,19 @@ class BaseEndpoint:
     def get(self, endpoint: str, params: dict[str, Any] | None = None):
         return self.client.get(endpoint, params=params)
 
-    def post(self, endpoint: str, data: dict[str, Any] | None = None):
-        return self.client.post(endpoint, data=data)
+    def post(
+            self,
+            endpoint,
+            data=None,
+            json=None,
+            files=None,
+    ):
+        return self.client.post(
+            endpoint,
+            data=data,
+            json=json,
+            files=files,
+        )
 
     def put(self, endpoint: str, data: dict[str, Any] | None = None):
         return self.client.put(endpoint, data=data)

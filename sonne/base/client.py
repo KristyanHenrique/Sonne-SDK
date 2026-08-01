@@ -36,10 +36,35 @@ class BaseClient:
         url = self.build_url(endpoint)
 
         if self.debug:
-            print(f"{method} {url}")
+            request = requests.Request(
+                method=method,
+                url=url,
+                **kwargs,
+            )
 
-            if kwargs.get("params"):
-                print(f"Params: {kwargs['params']}")
+            prepared = self.session.prepare_request(request)
+
+            print("\n" + "=" * 80)
+            print(f"{prepared.method} {prepared.url}")
+            print("-" * 80)
+
+            print("HEADERS:")
+            for key, value in prepared.headers.items():
+                print(f"{key}: {value}")
+
+            print("-" * 80)
+            print("BODY:")
+
+            body = prepared.body
+
+            if body is None:
+                print("<vazio>")
+            elif isinstance(body, bytes):
+                print(body.decode("utf-8", errors="ignore"))
+            else:
+                print(body)
+
+            print("=" * 80 + "\n")
 
         response = self.session.request(
             method=method,
@@ -63,15 +88,18 @@ class BaseClient:
         )
 
     def post(
-        self,
-        endpoint: str,
-        json: dict | None = None,
+            self,
+            endpoint,
+            data=None,
+            json=None,
+            files=None,
     ):
-
         return self.request(
             "POST",
             endpoint,
+            data=data,
             json=json,
+            files=files,
         )
 
     def put(
@@ -96,11 +124,19 @@ class BaseClient:
             endpoint,
         )
 
-    def _handle_response(
-        self,
-        response,
-    ):
+    def _handle_response(self, response):
 
         response.raise_for_status()
 
-        return response.json()
+        content_type = response.headers.get(
+            "Content-Type",
+            ""
+        )
+
+        if "application/json" in content_type:
+            return response.json()
+
+        if "text/" in content_type:
+            return response.text
+
+        return response.content
