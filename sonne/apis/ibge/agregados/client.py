@@ -3,10 +3,10 @@ from sonne.base.endpoint import BaseEndpoint
 
 class Agregados(BaseEndpoint):
 
-    PATH = "/v3/agregados"
+    PATH = "/v3/Agregados"
 
     def listar(self):
-        """Lista todos os agregados disponíveis."""
+        """Lista todos os Agregados disponíveis."""
         return self.get(self.PATH)
 
     def metadados(self, agregado: int):

@@ -1,10 +1,12 @@
 from sonne.base.client import BaseClient
 from .BancoGeodesico import BancoGeodesico
 from .NomesGeograficos import NomesGeograficos
-from .calendario import calendario
-from .hgeohnor import hgeohnor
-from .cnae import cnae
-from .agregados import Agregados
+from .MalhasGeograficas import MalhasGeograficas
+from .Calendario import calendario
+from .Hgeohnor import hgeohnor
+from .Localidade import localidade
+from .Cnae import cnae
+from .Agregados import Agregados
 
 
 class IBGEClient(BaseClient):
@@ -26,3 +28,5 @@ class IBGEClient(BaseClient):
         self.calendario = calendario(self)
         self.cnae = cnae(self)
         self.hgeohnor = hgeohnor(self)
+        self.localidade = localidade(self)
+        self.MalhasGeograficas = MalhasGeograficas(self)

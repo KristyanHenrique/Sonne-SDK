@@ -5,7 +5,7 @@ from sonne.base.endpoint import BaseEndpoint
 
 class hgeohnor(BaseEndpoint):
 
-    PATH = "/v1/hgeohnor"
+    PATH = "/v1/Hgeohnor"
 
     def listarPontosPost(
             self,

@@ -13,5 +13,5 @@ class cnae(BaseModel):
 
         self.cnae = [
             cnae(item)
-            for item in data.get("cnae", [])
+            for item in data.get("Cnae", [])
         ]

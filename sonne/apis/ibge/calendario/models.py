@@ -13,5 +13,5 @@ class calendario(BaseModel):
 
         self.calendario = [
             calendario(item)
-            for item in data.get("calendario", [])
+            for item in data.get("Calendario", [])
         ]

@@ -13,5 +13,5 @@ class hgeohnor(BaseModel):
 
         self.hgeohnor = [
             hgeohnor(item)
-            for item in data.get("hgeohnor", [])
+            for item in data.get("Hgeohnor", [])
         ]

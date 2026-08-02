@@ -5,7 +5,7 @@ from sonne.base.endpoint import BaseEndpoint
 
 class cnae(BaseEndpoint):
 
-    PATH = "/v2/cnae"
+    PATH = "/v2/Cnae"
 
     def listaClasses(self):
         return self.get(f"{self.PATH}/classes")

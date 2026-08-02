@@ -13,5 +13,5 @@ class PesquisaAgregado(BaseModel):
 
         self.agregados = [
             Agregado(item)
-            for item in data.get("agregados", [])
+            for item in data.get("Agregados", [])
         ]
