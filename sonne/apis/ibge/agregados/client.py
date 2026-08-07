@@ -3,7 +3,7 @@ from sonne.base.endpoint import BaseEndpoint
 
 class Agregados(BaseEndpoint):
 
-    PATH = "/v3/Agregados"
+    PATH = "/v3/agregados"
 
     def listar(self):
         """Lista todos os Agregados disponíveis."""

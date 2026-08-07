@@ -1,5 +1,5 @@
+import requests
 from requests import Session
-
 
 class BaseClient:
 
@@ -134,7 +134,10 @@ class BaseClient:
         )
 
         if "application/json" in content_type:
-            return response.json()
+            try:
+                return response.json()
+            except ValueError:
+                return response.text
 
         if "text/" in content_type:
             return response.text
